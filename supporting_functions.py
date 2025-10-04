@@ -5,6 +5,7 @@ import re
 import streamlit as st
 
 from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api.proxies import WebshareProxyConfig
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
@@ -182,5 +183,6 @@ def rag_answer(question, vectorstore):
     #chain
     chain = prompt|llm
     response= chain.invoke({"context":context_text,"question":question})
+
 
     return response.content
